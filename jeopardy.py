@@ -1,6 +1,6 @@
 import pandas as pd
 
-pd.set_option('display.max_colwidth', 100)
+pd.set_option('display.max_colwidth', 20)
 
 df = pd.read_csv('jeopardy.csv')
 
@@ -15,7 +15,7 @@ df.rename(columns={
     ' Answer': 'answer'},
     inplace=True)
 
-print(df.head())
+#print(df.iloc[39:99])
 print()
 
 # step3: function that filters the dataset for questions that contains all of the words in a list of words
@@ -30,5 +30,10 @@ def filterDataQuestionsByWords(data, words):
 # testing function
 words = ["KinG", "EnglanD"]
 fd = filterDataQuestionsByWords(df, words)
-print(fd.question)
+# print(fd.question)
 print()
+
+# step 5: add column floatValue with converting values to float
+floatValue = lambda v: float(v.replace('$', '').replace(',', '').replace('no value', '0'))
+df['floatValue'] = df['value'].apply(floatValue)
+print(df.iloc[45:56])
