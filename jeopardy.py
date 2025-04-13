@@ -57,4 +57,4 @@ print(f"The average value of questions that contain the word - {words[0].lower()
 
 # step 6: return the count of the unique answers to all of the questions in a filtering dataset
 countUniqueAnswer = fd["answer"].value_counts()
-print(uniqueAnswer)
+print(countUniqueAnswer)
