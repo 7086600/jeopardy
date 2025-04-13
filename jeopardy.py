@@ -50,11 +50,13 @@ print(df.iloc[100:121])
 
 print()
 # the average value of questions that contain the word
-words = ["King"]
+words = ["Queen"]
 fd = filterDataQuestionsByWords(df, words)
 print(fd.head(15))
-print(f"The average value of questions that contain the word - {words[0].lower()} is {fd.floatValue.mean():.2f}")
+print(f"The average value of questions that contain the word - {words[0].lower()} is {fd.floatValue.mean():.4f}")
 
-# step 6: return the count of the unique answers to all of the questions in a filtering dataset
-countUniqueAnswer = fd["answer"].value_counts()
-print(countUniqueAnswer)
+# step 6: a function that returns the count of the unique answers to all of the questions in a filtering dataset
+def countUniqueAnswer(data):
+    return data["answer"].value_counts()
+
+print(countUniqueAnswer(fd))
