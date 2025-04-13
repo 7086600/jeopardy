@@ -1,9 +1,11 @@
 import pandas as pd
 
-pd.set_option('display.max_colwidth', 75)
+pd.set_option('display.max_colwidth', None)
 
+# step1: inspecting dataset
 df = pd.read_csv('jeopardy.csv')
 # print(df.head(10))
+# print(df.columns)
 
 # step2: rename columns
 df.rename(columns={
@@ -26,14 +28,16 @@ def filterDataQuestionsByWords(data, words):
     # lowercase both: word, question
     checkQuestion = lambda question: all([True if word.lower() in question.lower() else False for word in words])
     # apply lambda function to question column and return data frame with True question column
-    filterData = data[data.question.apply(checkQuestion)]
+    # filterData = data[data.question.apply(checkQuestion)]
+    filterData = data.loc[data["question"].apply(checkQuestion)]
     return filterData
 
-# testing function
-words = ["King", "England"]
+# step4: testing function
+print()
+words = ["KinG", "eNglAnd"]
 fd = filterDataQuestionsByWords(df, words)
-# print(fd.head(10))
-# print(fd.info())
+print(fd.info())
+print(fd.head(10))
 print()
 
 # step 5: add column floatValue with converting values to float
