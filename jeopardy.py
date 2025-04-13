@@ -41,12 +41,20 @@ print(fd.head(10))
 print()
 
 # step 5: add column floatValue with converting values to float
+print()
+# wich values are in value column
+# print(df["value"].unique())
 floatValue = lambda v: float(v.replace('$', '').replace(',', '').replace('no value', '0'))
 df['floatValue'] = df['value'].apply(floatValue)
-# print(df.iloc[100:121])
+print(df.iloc[100:121])
+
 print()
 # the average value of questions that contain the word
-words = ["kinG"]
+words = ["King"]
 fd = filterDataQuestionsByWords(df, words)
-# print(fd.head(15))
+print(fd.head(15))
 print(f"The average value of questions that contain the word - {words[0].lower()} is {fd.floatValue.mean():.2f}")
+
+# step 6: return the count of the unique answers to all of the questions in a filtering dataset
+countUniqueAnswer = fd["answer"].value_counts()
+print(uniqueAnswer)
