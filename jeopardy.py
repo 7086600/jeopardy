@@ -3,7 +3,7 @@ import pandas as pd
 pd.set_option('display.max_colwidth', None)
 
 # step1: inspecting dataset
-df = pd.read_csv('jeopardy.csv')
+df = pd.read_csv('jeopardy.csv', parse_dates=[1])
 # print(df.head(10))
 # print(df.columns)
 
@@ -60,3 +60,20 @@ def countUniqueAnswer(data):
     return data["answer"].value_counts()
 
 print(countUniqueAnswer(fd))
+
+# step 7: function that filters the dataset for questions that date between start and end date
+
+def filterDataQuestionsByDate(data, start, end):
+    # convert start and end to datetime format
+    start = pd.to_datetime(start)
+    end = pd.to_datetime(end)
+    # lambda function return question if date between start-end
+    checkDate = lambda date: True if (date > start) & (date < end) else False
+    # apply lambda function to question column and return data frame with question between start and end date
+    filterData = data.loc[data["airDate"].apply(checkDate)]
+    return filterData
+
+print(len(filterDataQuestionsByDate(df, '1989-12-31', '2000-01-01')))
+
+# a = input("Enter something: ")
+# print(a)
