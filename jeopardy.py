@@ -73,7 +73,7 @@ def filterDataQuestionsByDate(data, start, end):
     filterData = data.loc[data["airDate"].apply(checkDate)]
     return filterData
 
-print(len(filterDataQuestionsByDate(df, '1989-12-31', '2000-01-01')))
+print(filterDataQuestionsByDate(df, '1989-12-31', '2000-01-01').head(10))
 
 # a = input("Enter something: ")
 # print(a)
