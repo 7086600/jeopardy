@@ -74,6 +74,18 @@ def filterDataQuestionsByDate(data, start, end):
     return filterData
 
 print(filterDataQuestionsByDate(df, '1989-12-31', '2000-01-01').head(10))
+# Investigate how many questions from the 90s use the word "Computer" compared to questions from the 2000s
+# filtering dataset by date
+jeopardy1990df = filterDataQuestionsByDate(df, '1989-12-31', '2000-01-01')
+jeopardy2000df = filterDataQuestionsByDate(df, '2000-01-01', '2011-01-01')
+# filtering dataset by word
+words = ["apple"]
+jeopardy1990fd = filterDataQuestionsByWords(jeopardy1990df, words)
+jeopardy2000fd = filterDataQuestionsByWords(jeopardy2000df, words)
+
+print(f'The count of question from 90s with word {words[0]} is {jeopardy1990fd["question"].count()}')
+print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd["question"].count()}')
+
 
 # a = input("Enter something: ")
 # print(a)
