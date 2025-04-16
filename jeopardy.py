@@ -89,16 +89,19 @@ print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd
 # step 8: quiz system
 print()
 def getUserAnswer(data):
+    # get random value from dataSet
     randomQuestion = data.sample()
-    print(randomQuestion[['question', 'answer', 'floatValue']])
+    print(f"The question is: {randomQuestion['question'].values[0]}. Value: {randomQuestion['value'].values[0]}")
+    
     getUserAnswer = input('Enter your answer: ')
     if getUserAnswer == randomQuestion['answer'].values[0]:
-        return(True)
+        return(f"That\'s correct answer!" )
     else:
-        return(False)
+        return(f"Unfortunately, you are wrong. The correct answer is - {randomQuestion['answer'].values[0]}")
 
-for _ in range(5):
+for _ in range(2):
     print(getUserAnswer(df))
+    print("Next step >")
 
 # a = input("Enter something: ")
 # print(a)
