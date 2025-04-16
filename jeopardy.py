@@ -19,7 +19,6 @@ df.rename(columns={
     inplace=True)
 
 # print(df.iloc[39:56])
-print(df.question.head(10))
 
 # step3: function that filters the dataset for questions that contains all of the words in a list of words
 
@@ -62,7 +61,6 @@ def countUniqueAnswer(data):
 print(countUniqueAnswer(fd))
 
 # step 7: function that filters the dataset for questions that date between start and end date
-
 def filterDataQuestionsByDate(data, start, end):
     # convert start and end to datetime format
     start = pd.to_datetime(start)
@@ -85,6 +83,11 @@ jeopardy2000fd = filterDataQuestionsByWords(jeopardy2000df, words)
 
 print(f'The count of question from 90s with word {words[0]} is {jeopardy1990fd["question"].count()}')
 print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd["question"].count()}')
+
+# step 8: quiz system
+print()
+randomQuestion = df.sample()
+print(randomQuestion[['question', 'answer']])
 
 # a = input("Enter something: ")
 # print(a)
