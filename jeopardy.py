@@ -29,7 +29,7 @@ def filterDataQuestionsByWords(data, words):
     # filterData = data[data.question.apply(checkQuestion)]
     filterData = data.loc[data["question"].apply(checkQuestion)]
     return filterData
-
+'''
 # step4: testing function filterDataQuestionsByWords
 print()
 words = ["KinG", "eNglAnd"]
@@ -85,7 +85,7 @@ jeopardy2000fd = filterDataQuestionsByWords(jeopardy2000df, words)
 print()
 print(f'The count of question from 90s with word {words[0]} is {jeopardy1990fd["question"].count()}')
 print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd["question"].count()}')
-
+'''
 # step 8: quiz system
 print()
 randomQuestion = df.sample()
