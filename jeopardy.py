@@ -92,16 +92,20 @@ def getUserAnswer(data):
     # get random value from dataSet
     randomQuestion = data.sample().iloc[0]
     print(f"The question is: {randomQuestion['question']}. Value: {randomQuestion['value']}")
-    userAnswer = input('Enter your answer: ').strip()
     correctAnswer = randomQuestion['answer'].strip()
+    # print(correctAnswer)
+    
+    userAnswer = input('Enter your answer: ').strip()
+    
     if userAnswer.lower() == correctAnswer.lower():
-        return(f"That\'s correct answer!" )
+        winnigSum = randomQuestion['floatValue']
+        return(f"That\'s correct answer! You win: {winnigSum}" )
     else:
-        return(f"Unfortunately, you are wrong. ThShaune correct answer is - {correctAnswer}")
+        return(f"Unfortunately, you are wrong. The correct answer is - {correctAnswer}")
 
 for _ in range(2):
     print(getUserAnswer(df))
-    print("Next step >")
+
 
 # a = input("Enter something: ")
 # print(a)
