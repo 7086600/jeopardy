@@ -90,14 +90,14 @@ print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd
 print()
 def getUserAnswer(data):
     # get random value from dataSet
-    randomQuestion = data.sample()
-    print(f"The question is: {randomQuestion['question'].values[0]}. Value: {randomQuestion['value'].values[0]}")
-    
-    getUserAnswer = input('Enter your answer: ')
-    if getUserAnswer == randomQuestion['answer'].values[0]:
+    randomQuestion = data.sample().iloc[0]
+    print(f"The question is: {randomQuestion['question']}. Value: {randomQuestion['value']}")
+    userAnswer = input('Enter your answer: ').strip()
+    correctAnswer = randomQuestion['answer'].strip()
+    if userAnswer.lower() == correctAnswer.lower():
         return(f"That\'s correct answer!" )
     else:
-        return(f"Unfortunately, you are wrong. The correct answer is - {randomQuestion['answer'].values[0]}")
+        return(f"Unfortunately, you are wrong. ThShaune correct answer is - {correctAnswer}")
 
 for _ in range(2):
     print(getUserAnswer(df))
