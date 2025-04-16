@@ -29,14 +29,14 @@ def filterDataQuestionsByWords(data, words):
     # filterData = data[data.question.apply(checkQuestion)]
     filterData = data.loc[data["question"].apply(checkQuestion)]
     return filterData
-'''
+
 # step4: testing function filterDataQuestionsByWords
 print()
 words = ["KinG", "eNglAnd"]
 fd = filterDataQuestionsByWords(df, words)
 # print(fd.info())
 print(fd.head(3))
-'''
+
 # step 5: add column floatValue with converting values to float
 print()
 # wich values are in value column
@@ -44,7 +44,7 @@ print()
 floatValue = lambda v: float(v.replace('$', '').replace(',', '').replace('no value', '0'))
 df['floatValue'] = df['value'].apply(floatValue)
 print(df.iloc[100:104])
-'''
+
 print()
 # the average value of questions that contain the word
 words = ["Queen"]
@@ -85,27 +85,24 @@ jeopardy2000fd = filterDataQuestionsByWords(jeopardy2000df, words)
 print()
 print(f'The count of question from 90s with word {words[0]} is {jeopardy1990fd["question"].count()}')
 print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd["question"].count()}')
-'''
+
 # step 8: quiz system
 print()
+# function that get random question, make a request and check user answer
 def getUserAnswer(data):
     # get random value from dataSet
     randomQuestion = data.sample().iloc[0]
     print(f"The question is: {randomQuestion['question']}. Value: {randomQuestion['value']}")
     correctAnswer = randomQuestion['answer'].strip()
     # print(correctAnswer)
-    
     userAnswer = input('Enter your answer: ').strip()
-    
+    # check user answer
     if userAnswer.lower() == correctAnswer.lower():
         winnigSum = randomQuestion['floatValue']
         return(f"That\'s correct answer! You win: {winnigSum}" )
     else:
         return(f"Unfortunately, you are wrong. The correct answer is - {correctAnswer}")
 
+# play in n-steps. the number of steps in range.
 for _ in range(2):
     print(getUserAnswer(df))
-
-
-# a = input("Enter something: ")
-# print(a)
