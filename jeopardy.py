@@ -88,13 +88,6 @@ print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd
 '''
 # step 8: quiz system
 print()
-# randomQuestion = df.sample()
-# print(randomQuestion)
-# print(randomQuestion['answer'].values[0])
-
-
-
-
 def getUserAnswer(data):
     randomQuestion = data.sample()
     print(randomQuestion[['question', 'answer', 'floatValue']])
