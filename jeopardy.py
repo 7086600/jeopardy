@@ -36,7 +36,7 @@ words = ["KinG", "eNglAnd"]
 fd = filterDataQuestionsByWords(df, words)
 # print(fd.info())
 print(fd.head(3))
-
+'''
 # step 5: add column floatValue with converting values to float
 print()
 # wich values are in value column
@@ -44,7 +44,7 @@ print()
 floatValue = lambda v: float(v.replace('$', '').replace(',', '').replace('no value', '0'))
 df['floatValue'] = df['value'].apply(floatValue)
 print(df.iloc[100:104])
-
+'''
 print()
 # the average value of questions that contain the word
 words = ["Queen"]
@@ -88,8 +88,24 @@ print(f'The count of question from 2000s with word {words[0]} is {jeopardy2000fd
 '''
 # step 8: quiz system
 print()
-randomQuestion = df.sample()
-print(randomQuestion[['question', 'answer']])
+# randomQuestion = df.sample()
+# print(randomQuestion)
+# print(randomQuestion['answer'].values[0])
+
+
+
+
+def getUserAnswer(data):
+    randomQuestion = data.sample()
+    print(randomQuestion[['question', 'answer', 'floatValue']])
+    getUserAnswer = input('Enter your answer: ')
+    if getUserAnswer == randomQuestion['answer'].values[0]:
+        return(True)
+    else:
+        return(False)
+
+for _ in range(5):
+    print(getUserAnswer(df))
 
 # a = input("Enter something: ")
 # print(a)
